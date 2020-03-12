@@ -67,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
                 NOTIFICATION_ID, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         notifyBuilder.setContentIntent(notificationPendingIntent);
         notifyBuilder.setAutoCancel(true);
+        notifyBuilder.setPriority(NotificationCompat.PRIORITY_HIGH);
+        notifyBuilder.setDefaults(NotificationCompat.DEFAULT_ALL);
         return notifyBuilder;    }
 
 }
