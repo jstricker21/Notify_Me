@@ -17,6 +17,10 @@ public class MainActivity extends AppCompatActivity {
 
     private Button button_notify;
 
+    private Button button_cancel;
+
+    private Button button_update;
+
     private static final String PRIMARY_CHANNEL_ID = "primary_notification_channel";
 
     private NotificationManager mNotifyManager;
@@ -32,6 +36,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 sendNotification();
+            }
+        });
+
+        button_update = findViewById(R.id.update);
+        button_update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateNotification();
+            }
+        });
+
+        button_cancel = findViewById(R.id.cancel);
+        button_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cancelNotification();
             }
         });
     }
@@ -69,6 +89,13 @@ public class MainActivity extends AppCompatActivity {
         notifyBuilder.setAutoCancel(true);
         notifyBuilder.setPriority(NotificationCompat.PRIORITY_HIGH);
         notifyBuilder.setDefaults(NotificationCompat.DEFAULT_ALL);
-        return notifyBuilder;    }
+        return notifyBuilder;
+    }
+
+    public void updateNotification() {}
+
+    public void cancelNotification() {
+        mNotifyManager.cancel(NOTIFICATION_ID);
+    }
 
 }
