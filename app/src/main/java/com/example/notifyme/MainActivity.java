@@ -3,6 +3,7 @@ package com.example.notifyme;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -121,7 +122,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void cancelNotification() {
+        NotificationCompat.Builder notifyBuilder = getNotificationBuilder();
         mNotifyManager.cancel(NOTIFICATION_ID);
+        Intent updateIntent = new Intent(ACTION_UPDATE_NOTIFICATION);
+        PendingIntent updatePendingIntent = PendingIntent.getBroadcast
+                (this, NOTIFICATION_ID, updateIntent, PendingIntent.FLAG_ONE_SHOT);
+        notifyBuilder.addAction(R.drawable.ic_update, "Update Notification", updatePendingIntent);
         setNotificationButtonState(true, false, false);
     }
 
