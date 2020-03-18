@@ -114,9 +114,11 @@ public class MainActivity extends AppCompatActivity {
         Bitmap androidImage = BitmapFactory
                 .decodeResource(getResources(),R.drawable.mascot_1);
         NotificationCompat.Builder notifyBuilder = getNotificationBuilder();
-        notifyBuilder.setStyle(new NotificationCompat.BigPictureStyle()
-                .bigPicture(androidImage)
-                .setBigContentTitle("Notification Updated!"));
+        notifyBuilder.setStyle(new NotificationCompat.InboxStyle()
+                .addLine("You have been notified!")
+                .addLine("PAY ATTENTION TO THIS NOTIFICATION!")
+                .setBigContentTitle("")
+                .setSummaryText("+3 more"));
         mNotifyManager.notify(NOTIFICATION_ID, notifyBuilder.build());
         setNotificationButtonState(false, false, true);
     }
